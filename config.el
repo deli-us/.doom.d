@@ -52,4 +52,5 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(load! "~/git/yang-mode/yang-mode.el")
+(after! lsp-ui
+  (setq lsp-ui-doc-enable t))
