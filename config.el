@@ -35,6 +35,8 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
 
+;;Maximize the window upon startup.
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
