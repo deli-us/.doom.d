@@ -48,4 +48,9 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
 (package! yang-mode :recipe (:host github :repo "mbj4668/yang-mode" :branch "master"))
+(package! dot-mode :recipe (:host github :repo "ppareit/graphviz-dot-mode" :branch "master"))
+
+(package! org-reveal)
+(package! ox-reveal)
