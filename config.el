@@ -57,6 +57,23 @@
 (after! lsp-ui
   (setq lsp-ui-doc-enable t))
 
+
 ;; global beacon minor-mode
 (use-package! beacon)
 (after! beacon (beacon-mode 1))
+
+(after! org
+  (load-library "ox-reveal")
+  (setq org-reveal-root "file:///path/to/reveal.js-master"))
+
+
+;; Generate erlang-ls config
+(defconst erlang-ls-template "~/erlang_ls.config.template")
+
+(defun my/write-erlang-ls-file (dir)
+  (let ((dirname (expand-file-name dir)))
+    (with-temp-file (concat dirname "/erlang_ls.config")
+      (progn
+        (insert-file-contents erlang-ls-template)
+        (while (re-search-forward "<base>" nil t)
+          (replace-match dirname))))))
