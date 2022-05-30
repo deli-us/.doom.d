@@ -49,3 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 (package! yang-mode :recipe (:host github :repo "mbj4668/yang-mode" :branch "master"))
+(package! beacon)
+(package! rfc-mode :recipe (:host github :repo "galdor/rfc-mode" :branch "master"))
+
+(package! wsd-mode :recipe (:host github :repo "josteink/wsd-mode" :branch "master"))

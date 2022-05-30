@@ -56,3 +56,7 @@
 ;; they are implemented.
 (after! lsp-ui
   (setq lsp-ui-doc-enable t))
+
+;; global beacon minor-mode
+(use-package! beacon)
+(after! beacon (beacon-mode 1))
