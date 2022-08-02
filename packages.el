@@ -59,5 +59,10 @@
 (package! wsd-mode :recipe (:host github :repo "josteink/wsd-mode" :branch "master"))
 (package! dot-mode :recipe (:host github :repo "ppareit/graphviz-dot-mode" :branch "master"))
 
+(package! daml-mode :recipe (:local-repo  "~/git/daml/" :branch "master" :files  ("emacs/mode-mode.el")))
+
 (package! org-reveal)
 (package! ox-reveal)
+
+(package! haskell-mode)
+(package! lsp-haskell)
