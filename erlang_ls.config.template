@@ -1,0 +1,19 @@
+otp_path: "<base>/otp"
+deps_dirs:
+ - "lib/*"
+diagnostics:
+ enabled:
+   - crossref
+   - elvis
+ disabled:
+   - dialyzer
+   - compiler
+include_dirs:
+ - "lib/*/include"
+ - "lib"
+lenses:
+ disabled:
+   - ct-run-test
+   - show-behaviour-usages
+elvis_path: "<base>/support/elvis.config"
+plt_path: "<base>/support/dialyzer.plt"
