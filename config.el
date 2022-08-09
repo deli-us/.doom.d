@@ -69,7 +69,7 @@
 (remove-hook 'doom-first-buffer-hook #'ws-butler-global-mode)
 
 ;; Generate erlang-ls config
-(defconst erlang-ls-template "~/erlang_ls.config.template")
+(defconst erlang-ls-template "~/.doom.d/erlang_ls.config.template")
 
 (defun my/write-erlang-ls-file (dir)
   (let ((dirname (expand-file-name dir)))
@@ -79,23 +79,12 @@
         (while (re-search-forward "<base>" nil t)
           (replace-match dirname))))))
 
-;; (defconst my-erlang-ls-config
-;;   ("otp_path: \"<base>/otp\""
-;;    "deps_dirs:"
-;;    "lib/*"
-;;    "diagnostics:"
-;;  enabled:
-;;    - crossref
-;;    - elvis
-;;  disabled:
-;;    - dialyzer
-;;    - compiler
-;; include_dirs:
-;;  - "lib/*/include"
-;;  - "lib"
-;; lenses:
-;;  disabled:
-;;    - ct-run-test
-;;    - show-behaviour-usages
-;; elvis_path: "<base>/support/elvis.config"
-;; plt_path: "<base>/support/dialyzer.plt"
+(defun my/ensure-erlang-ls-template-exists ()
+  (interactive)
+  )
+  
+(with-eval-after-load 'lsp-mode 
+   (add-hook 'lsp-managed-mode-hook 
+          (lambda () 
+            (when lsp-enable-on-type-formatting (warn "You have lsp-enable-on-type-formatting set to t")))))
+
