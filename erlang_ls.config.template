@@ -1,19 +1,26 @@
 otp_path: "<base>/otp"
 deps_dirs:
- - "lib/*"
+  - "lib/*"
+  - "system/test/lib/*"
+
 diagnostics:
- enabled:
-   - crossref
-   - elvis
- disabled:
-   - dialyzer
-   - compiler
+  enabled:
+    - compiler
+  disabled:
+    - elvis
+    - dialyzer
+    - crossref
+    - unused_includes
+
 include_dirs:
- - "lib/*/include"
- - "lib"
+  - "include"
+  - "lib"
+  - "system/test/lib/"
+
 lenses:
- disabled:
-   - ct-run-test
-   - show-behaviour-usages
-elvis_path: "<base>/support/elvis.config"
-plt_path: "<base>/support/dialyzer.plt"
+  disabled:
+    - ct-run-test
+    - server-info
+    - show-behaviour-usages
+    - suggest-spec
+    - function-references
