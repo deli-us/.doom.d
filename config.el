@@ -84,7 +84,10 @@
   )
   
 (with-eval-after-load 'lsp-mode 
-   (add-hook 'lsp-managed-mode-hook 
-          (lambda () 
-            (when lsp-enable-on-type-formatting (warn "You have lsp-enable-on-type-formatting set to t")))))
+  (progn
+    (setq lsp-enable-file-watchers nil)
+    (add-hook 'lsp-managed-mode-hook
+              (lambda ()
+                (when lsp-enable-on-type-formatting
+                  (warn "You have lsp-enable-on-type-formatting set to t"))))))
 
