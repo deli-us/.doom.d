@@ -61,6 +61,12 @@
 
 ;;(package! daml-mode :recipe (:local-repo  "~/git/daml/" :branch "master" :files  ("emacs/mode-mode.el")))
 
+(package! qrencode :recipe (:host github :repo "ruediger/qrencode-el" :branch "main"))
+;;https://github.com/ruediger/qrencode-el
+
+
+
+
 (package! org-reveal)
 (package! ox-reveal)
 
