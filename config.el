@@ -91,3 +91,14 @@
                 (when lsp-enable-on-type-formatting
                   (warn "You have lsp-enable-on-type-formatting set to t"))))))
 
+(use-package! whitespace
+  :config
+  (setq
+    whitespace-style '(face spaces tabs newline space-mark tab-mark newline-mark )
+    whitespace-display-mappings '(
+      (space-mark   ?\     [?\u00B7]     [?.])
+      (space-mark   ?\xA0  [?\u00A4]     [?_])
+      (newline-mark ?\n    [?¬ ?\n])
+      (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t]))))
+
+(global-whitespace-mode +1)
