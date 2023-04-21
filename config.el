@@ -81,7 +81,9 @@
 
 (defun my/ensure-erlang-ls-template-exists ()
   (interactive)
-  )
+  (let ((dir default-directory))
+    (message "Instantiated erlang_ls.config to %s " dir)
+    (my/write-erlang-ls-file dir)))
   
 (with-eval-after-load 'lsp-mode 
   (progn
