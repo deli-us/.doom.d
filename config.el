@@ -64,7 +64,9 @@
 
 (after! org
   (load-library "ox-reveal")
-  (setq org-reveal-root "file:///path/to/reveal.js-master"))
+  (setq org-reveal-root "file:///path/to/reveal.js-master")
+  (add-hook 'org-mode-hook (lambda ()
+                             (auto-fill-mode))))
 
 (remove-hook 'doom-first-buffer-hook #'ws-butler-global-mode)
 
