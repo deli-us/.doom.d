@@ -93,6 +93,11 @@
                 (when lsp-enable-on-type-formatting
                   (warn "You have lsp-enable-on-type-formatting set to t"))))))
 
+(add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
+(defun my-erlang-mode-hook ()
+  ;; Disable drtr-mode
+  (dtrt-indent-mode))
+
 (use-package! whitespace
   :config
   (setq
