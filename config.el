@@ -64,9 +64,7 @@
 
 (after! org
   (load-library "ox-reveal")
-  (setq org-reveal-root "file:///path/to/reveal.js-master")
-  (add-hook 'org-mode-hook (lambda ()
-                             (auto-fill-mode))))
+  (setq org-reveal-root "file:///path/to/reveal.js-master"))
 
 (remove-hook 'doom-first-buffer-hook #'ws-butler-global-mode)
 
@@ -86,31 +84,50 @@
   (let ((dir default-directory))
     (message "Instantiated erlang_ls.config to %s " dir)
     (my/write-erlang-ls-file dir)))
-  
-(with-eval-after-load 'lsp-mode 
+
+;(with-eval-after-load 'lsp-mode 
+;  (progn
+;    (setq lsp-enable-file-watchers nil)
+;    (add-hook 'lsp-managed-mode-hook
+;              (lambda ()
+;                (when lsp-enable-on-type-formatting
+;                 (warn "You have lsp-enable-on-type-formatting set to t"))))))
+
+(use-package! lsp-mode
+
+  :config
+  ;; Enable LSP automatically for Erlang files
+  (add-hook 'erlang-mode-hook #'lsp)
+
+  ;; ELP, added as priority 0 (> -1) so takes priority over the built-in one
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection '("elp" "server"))
+                    :major-modes '(erlang-mode)
+                    :priority 0
+                    :server-id 'erlang-language-platform))
+  )
+
+(with-eval-after-load 'yang-mode
   (progn
-    (setq lsp-enable-file-watchers nil)
-    (add-hook 'lsp-managed-mode-hook
-              (lambda ()
-                (when lsp-enable-on-type-formatting
-                  (warn "You have lsp-enable-on-type-formatting set to t"))))))
+    (add-hook 'yang-mode-hook
+              '(lambda ()
+                 (setq c-basic-offset 2)))))
 
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
 (defun my-erlang-mode-hook ()
   ;; Disable drtr-mode
-  (dtrt-indent-mode))
+  (dtrt-indent-mode -1))
 
 (use-package! whitespace
   :config
   (setq
-    whitespace-style '(face spaces tabs newline space-mark tab-mark newline-mark )
+    whitespace-style '(face tabs tab-mark spaces space-mark trailing newline newline-mark)
     whitespace-display-mappings '(
       (space-mark   ?\     [?\u00B7]     [?.])
       (space-mark   ?\xA0  [?\u00A4]     [?_])
-      (newline-mark ?\n    [?¬ ?\n])
-      (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t]))))
-
-(global-whitespace-mode +1)
+      (newline-mark ?\n    [182 ?\n])
+      (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t])))
+  (global-whitespace-mode +1))
 
 ;;; Use ISO week numbering.
 (setq calendar-week-start-day 1
