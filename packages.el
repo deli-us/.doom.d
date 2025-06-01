@@ -64,8 +64,7 @@
 (package! qrencode :recipe (:host github :repo "ruediger/qrencode-el" :branch "main"))
 ;;https://github.com/ruediger/qrencode-el
 
-
-
+(package! gptel :recipe (:host github :repo "karthink/gptel" :branch "master"))
 
 (package! org-reveal)
 (package! ox-reveal)

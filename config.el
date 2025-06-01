@@ -138,3 +138,9 @@
                  (calendar-iso-from-absolute
                   (calendar-absolute-from-gregorian (list month day year)))))
         'font-lock-face 'font-lock-function-name-face))
+
+(use-package! gptel
+  :config
+  (setq gptel-model 'claude-3.7-sonnet
+        gptel-backend (gptel-make-gh-copilot "Copilot"))
+  (gptel-make-gh-copilot "Copilot"))
