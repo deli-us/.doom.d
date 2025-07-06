@@ -66,6 +66,9 @@
 
 (package! gptel :recipe (:host github :repo "karthink/gptel" :branch "master"))
 
+(package! origami)
+(package! lsp-origami)
+
 (package! org-reveal)
 (package! ox-reveal)
 

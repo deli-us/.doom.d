@@ -55,8 +55,15 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 (after! lsp-ui
-  (setq lsp-ui-doc-enable t))
+  (setq lsp-ui-doc-enable t)
+  (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-doc-position 'bottom))
 
+
+;; Enable LSP Origami Mode (for folding ranges)
+(after! lsp-origami
+  (add-hook 'origami-mode-hook #'lsp-origami-mode)
+  (add-hook 'erlang-mode-hook #'origami-mode))
 
 ;; global beacon minor-mode
 (use-package! beacon)
