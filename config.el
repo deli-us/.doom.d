@@ -144,3 +144,8 @@
   (setq gptel-model 'claude-3.7-sonnet
         gptel-backend (gptel-make-gh-copilot "Copilot"))
   (gptel-make-gh-copilot "Copilot"))
+
+
+(use-package! lux-mode)
+
+(global-display-fill-column-indicator-mode 1)

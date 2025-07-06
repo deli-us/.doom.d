@@ -50,7 +50,7 @@
 ;(unpin! t)
 
 (package! yang-mode :recipe (:host github :repo "mbj4668/yang-mode" :branch "master"))
-(package! lux-mode :recipe (:local-repo  "~/git/lux/" :branch "master" :files  ("emacs/lux-mode.el")))
+(package! lux-mode :recipe (:local-repo  "system/test/lib/lux/" :branch "master" :files  ("emacs/lux-mode.el")))
 ;;(package! lux-mode :recipe (:host github :repo "hawk/lux" :branch "master" :files  ("emacs/lux-mode.el")))
 
 (package! beacon)
